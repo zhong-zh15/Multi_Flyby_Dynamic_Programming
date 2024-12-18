@@ -10,7 +10,7 @@ If you use this code or parts of it in a scientific publication, we would greatl
 
 ### Algorithm Illustration
 
-![Algorithm Diagram](figure_DP_2_impulse.pdf)
+![Algorithm Diagram](figure_DP_2_impulse.png)
 
 ---
 
