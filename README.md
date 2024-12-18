@@ -8,7 +8,9 @@ Parallized with OpenMP (for shared memory systems), MultiTree can execute on sup
 
 If you use this code or parts of this code for results presented in a scientific publication, we would greatly appreciate a citation either to this code or to our published papers listed below.
 -->
-## Papers based on dynamic programming
+## Papers based on Multi-flyby Global Optimality
+
+* [Global Optimality in Multi-Flyby Asteroid Trajectory Optimization: Theory and Application Techniques]() - *Journal of Guidance, Control, and Dynamics*, 2024 (Submitted)
 
 * [Global Trajectory Optimization of Multi-Spacecraft Successive  Rendezvous Using Multi-Tree Search](https://arc.aiaa.org/doi/10.2514/1.G007764) - *Journal of Guidance, Control, and Dynamics*, 2024
 
