@@ -1,72 +1,73 @@
-## Multi-flyby dynamic programming
-<!---
-MultiTree Search is Open Source Algorithm for Multi-Spacecraft Successive Rendevous Mission. It was created in the 11th edition of the China Trajectory Optimization Competition (CTOC11) and then improved and tested for the 9th edition of the Global Trajectory Optimization Competition (GTOC9).
+## Multi-Flyby Dynamic Programming
 
-MultiTree Search is a natural extension of the original tree search framework, aiming to store with minimum space complexity, where the traditional tree search algorithm can be easily developed. This version combines the classic beam search with local search for better performance in GTOC9, which can be regarded as a variant multi-travel-salesman problem. We also apply dynamic programming to obtain the optimal rendevous time sequence (a continuous variable optimization problem). As far as we know, this is the first time we can give a theory-proof global optimal result in time optimization under a given rendevous sequence.
+### Overview
 
-Parallized with OpenMP (for shared memory systems), MultiTree can execute on supercomputers, clusters, or multi-core PCs running a Linux-based (or Windows) operating system. Now, MultiTree can only be run on the C++ platform. 
+This repository showcases the implementation of the Multi-Flyby Bi-Impulse Dynamic Programming algorithm. Bi-impulse refers to maneuvers where impulses are applied only at flyby moments without intermediate thrusting.
 
-If you use this code or parts of this code for results presented in a scientific publication, we would greatly appreciate a citation either to this code or to our published papers listed below.
--->
-## Papers based on Multi-flyby Global Optimality
+In this scenario, a two-dimensional state vector is sufficient to describe the spacecraft¡¯s state. The algorithm¡¯s complexity is limited to \(O(N_s^2 \times N)\), where \(N_s\) is the number of states per stage, and \(N\) is the number of flybys. For more general cases, such as Multi-Flyby Low-Thrust optimization, the implementation requires more complex code and dependencies. You are welcome to contact the author, Zhong Zhang, at [zhongzhang.astro@gmail.com](mailto:zhongzhang.astro@gmail.com) for further discussion.
 
-* [Global Optimality in Multi-Flyby Asteroid Trajectory Optimization: Theory and Application Techniques]() - *Journal of Guidance, Control, and Dynamics*, 2024 (Submitted)
+If you use this code or parts of it in a scientific publication, we would greatly appreciate a citation either to this repository or the related publications listed below.
 
-* [Global Trajectory Optimization of Multi-Spacecraft Successive  Rendezvous Using Multi-Tree Search](https://arc.aiaa.org/doi/10.2514/1.G007764) - *Journal of Guidance, Control, and Dynamics*, 2024
+### Algorithm Illustration
+
+![Algorithm Diagram](figure_DP_2_impulse.pdf)
+
+---
+
+## Papers Based on Multi-Flyby Global Optimality
+
+- **[Global Optimality in Multi-Flyby Asteroid Trajectory Optimization: Theory and Application Techniques]** - *Journal of Guidance, Control, and Dynamics*, 2024 (Submitted)
+
+- **[Global Trajectory Optimization of Multi-Spacecraft Successive Rendezvous Using Multi-Tree Search](https://arc.aiaa.org/doi/10.2514/1.G007764)** - *Journal of Guidance, Control, and Dynamics*, 2024
+
+---
 
 ## Getting Started
 
-These instructions will get you a copy of the project for development and testing purposes.
+### Prerequisites
 
-### Structure
-  `input_data`: orbit elements of all space debris.
-  
-  `src`: code of MultiTree.
+To get started, ensure that you have the required dependencies and tools for compiling and running the project. Once compiled, the program will generate results for impulsive GTOC4 and GTOC11 problems.
 
-  `include`: h files needed.
+### Document Structure
 
-  `output_result`: results computed by MultiTree
+- **`code/bin`**: Contains compiled binaries and output files.
+- **`code/include`**: Includes basic astrodynamics utilities and other dependencies.
+- **`code/input`**: Provides the initial orbital elements for all asteroids involved in GTOC4 and GTOC11 problems.
+- **`code/src`**: Contains the core implementation.
+- **`result_solution`**: Stores the results for impulsive GTOC4, GTOC11, and original low-thrust GTOC4 problems.
 
-  `bin`: compiling file
+### Installation
 
-  `build`:  build MultiTree by Cmake.
+#### Linux
+```bash
+# Clone the repository
+git clone --recursive https://github.com/zhong-zh15/Multi_Flyby_Dynamic_Programming
 
-  `lib`: library needed (None in this version).
+# Create build directory
+cd code && mkdir build
 
-### Quick installation 
-
-You can run MultiTree by only several steps:
-
-* Linux 
-```
-git clone --recursive https://github.com/zhong-zh15/gtoc9_MTS-DP
-cd gtoc9_par/build && rm -rf *
+# Build the project
+cd build && rm -rf *
 cmake ..
 make
-cd ../bin 
-sbatch GTOC9_parallel.sh
 ```
 
-* Windows (Visual Studio 2022)
+#### Windows (Visual Studio 2022)
+```bash
+# Clone the repository
+git clone --recursive https://github.com/zhong-zh15/Multi_Flyby_Dynamic_Programming
 ```
-git clone --recursive https://github.com/zhong-zh15/gtoc9_MTS-DP
-```
+
+---
 
 ## Authors
 
-* **Zhong Zhang** - *Initial work* - [Zhong Zhang, Tsinghua, LAD](https://github.com/zhong-zh15)
+- **Zhong Zhang** - *Initial Implementation* - [Zhong Zhang, Tsinghua, LAD](https://github.com/zhong-zh15)
 
-
-<!---
-See also the list of [contributors](AUTHORS.md) who participated in this project.
--->
+---
 
 ## License
 
-This project is licensed under the MIT LICENSE - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-<!---
-## Acknowledgments
 
-* Prof. Baoyin and colleagues in LAD
--->
